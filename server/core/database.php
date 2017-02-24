@@ -23,7 +23,7 @@ class Database {
    * Constructor.
    */
   public function __construct() {
-    $this->_connection = new mysqli('localhost', 'sandbox', 'sandbox', 'sandbox');
+    $this->_connection = mysqli_connect("localhost", "root", "", "raysiti_cms");
     // Error handling.
     if (mysqli_connect_error()) {
       trigger_error('Failed to connect to MySQL: ' . mysqli_connect_error(), E_USER_ERROR);
