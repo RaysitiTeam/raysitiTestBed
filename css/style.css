@@ -1874,11 +1874,11 @@ footer .nav li a {
 }
 
 .description-container {
-    padding: 50px;
+    padding: 0px 50px;
 }
 
 .Project-container {
-    padding: 50px;
+    padding: 10px 50px;
 }
 
 .social-shere {
