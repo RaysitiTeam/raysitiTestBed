@@ -1,0 +1,234 @@
+/*
+* Novo Theme
+* Created by : Ahmed Essa
+* website : www.ahmedessa.net
+*/
+
+
+/* DEMO-2
+==================================================
+    - Preloader -
+    - Header -
+    - About -
+	- Portfolio -
+    - blog -
+    - Contact -
+*/
+
+
+/* Preloader
+==================================================*/
+
+#preloader {
+    background-color: #333;
+}
+
+.logo-circle {
+    background: #7383B5;
+}
+
+@-webkit-keyframes white-shadow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(225, 225, 225, 0.3);
+        -webkit-transition: box-shadow 0.3s ease-in-out;
+    }
+    100% {
+        box-shadow: 0 0 0 30px transparent;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-transition: box-shadow 0.4s ease-in-out;
+    }
+}
+
+@keyframes white-shadow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(225, 225, 225, 0.3);
+        -webkit-transition: box-shadow 0.3s ease-in-out;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    100% {
+        box-shadow: 0 0 0 30px transparent;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: box-shadow 0.4s ease-in-out;
+        transition: box-shadow 0.4s ease-in-out;
+    }
+}
+
+
+/* Header
+==================================================*/
+
+.main-logo {
+  /*  background: #7383B5;*/
+}
+
+
+/* about section
+==================================================*/
+
+.about-section {
+    padding-top: 50px
+}
+.about-section .subtitle,
+.grey-color {
+    color: #999;
+}
+
+
+/* Portfolio section
+==================================================*/
+
+.portfolio-style-3 .portfolio .categories-grid .categories ul li a.active,
+.portfolio-style-3 .portfolio_item .portfolio_item_hover .item_info em {
+    background-color: #7383B5;
+}
+
+.filter-bg {
+    background: #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* blog section
+==================================================*/
+
+#section-5 {
+    padding-top: 50px;
+    background: #f5f5f5
+}
+
+.blog_item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.blog_item h3 {
+    font-size: 16px;
+    margin-top: 20px;
+    line-height: 27px;
+    font-weight: bold;
+    text-transform: inherit;
+    letter-spacing: 1px;
+}
+
+.blog-content {
+    background: #fff;
+    padding: 20px;
+    position: relative;
+    border-radius: 0 0 5px 5px;
+}
+
+.blog-content .athour-img {
+    position: absolute;
+    width: 50px;
+    top: -30px
+}
+
+.blog-main-img {
+    border-radius: 5px 5px 0 0;
+}
+
+.blog-img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-img-container span {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #7383B5;
+    border-radius: 25px;
+    z-index: 1;
+    padding: 0 10px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.big-post .blog-img-container img {
+    border-radius: 5px;
+}
+
+.content-overlay {
+    position: absolute;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000', GradientType=0);
+    z-index: 1;
+    color: #fff;
+    width: 100%;
+    bottom: -300px;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+    -webkit-transition: all .5s;
+    transition: all .5s
+}
+
+.big-post:hover .content-overlay {
+    bottom: 0px;
+}
+
+.big-post a:hover,
+.big-post a:focus {
+    color: #f5f5f5;
+}
+
+.blog-text {
+    margin: 50px;
+}
+
+.quote-post .blog-content {
+    border-radius: 5px;
+    color: #fff;
+    background: #7383B5;
+    padding: 0.25em;
+    padding: 20px;
+    text-align: center;
+}
+
+.quote-post .blog-content p {
+    font-style: italic;
+    font-size: 1.40em;
+    font-family: 'Lora', serif;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.quote-post .blog-content p::before {
+    content: '\201C';
+}
+
+.quote-post .blog-content p::after {
+    content: '\201D';
+}
+
+.quote-post .default-btn {
+    color: #fff;
+}
+
+.quote-post img {
+    margin-bottom: 20px;
+}
+
+.quote-post .default-btn:after {
+    background-color: #fff;
+}
+.blog_container p {
+    color: #999;
+}
+
+
+/* Contact section
+==================================================*/
+
+.mat-div::after {
+    background-color: #7383B5;
+}
+
+.is-active .mat-label {
+    color: #7383B5;
+}
