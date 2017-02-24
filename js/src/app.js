@@ -4,7 +4,8 @@
         //angular dependencies
         'ngAnimate',
         //third party dependencies
-        'ui.router'
+        'ui.router',
+        'ui.grid'
     ]);
 
     angular.module('raysiti').run(['$rootScope',    
