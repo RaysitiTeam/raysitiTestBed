@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="raysiti">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>RAYSITI: 3D Animation | 2D Animation | Architectural Walktroughs | Website Design | Logo Design | Brochure Design | Video Production | Animated Videos | Branding Solutions</title>
+    <title ng-bind="appName"></title>
     <link rel="icon" href="img/demo-1/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap css -->
@@ -975,11 +975,15 @@
     <script src="js/blog.js"></script>
     <script src="js/jquery.appear.js"></script>
     <script src="js/jquery.countTo.js"></script>
-
     <!-- cutom script -->
     <script src="js/custom.js"></script>
-
-
+    
+    <!--Angular related JS files-->
+    <script src="js/src/lib/angular.min.js"></script>
+    <script src="js/src/lib/angular-animate.min.js"></script>
+    <script src="js/src/lib/angular-ui-router.min.js"></script>
+    <script src="js/src/app.js"></script>
+    <script src="js/src/routes.js"></script>
 </body>
 
 </html>
