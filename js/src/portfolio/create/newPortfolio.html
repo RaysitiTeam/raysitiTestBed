@@ -2,7 +2,7 @@
 <div class="portfolio-inner-container">
         <div class="portfolio-hed">
             <h1 ng-bind="hello"></h1>
-            <p><a href="#">List Portfolio Items</p>
+            <h2>New Portfolio Item</h2>
         </div>
         <div class="navigation-container">
             <!--<a href="#"><i class="ion-android-arrow-back"></i></a>-->
@@ -14,11 +14,52 @@
             <!--description-row-->
             <div class="col-md-12">
                 <div class="description-container">
-                    <h4>New PortFolio Item</h4>
-                    <p>Lorem Ipsum Content goes here !</p>
-                    
-                </div>
+                    <h2>Enter Portfolio Details</h2>
+                    <!--first-column-->
+                    <div class="col-md-6">
+                        <div class="col-md-11">
+                            <label for="name">Portfolio Name</label>
+                            <p><input name="name" type="text" class="form-control" ng-model="inputForm.name" placeholder="Enter Name"/></p>
+                            <p>
+                                <label for="category-list">Choose Category</label>
+                                <select name="category-list" class="form-control" ng-model="inputForm.category">
+                                    <option selected="selected">Website</option>
+                                    <option>Logo</option>
+                                    <option>3D Content</option>
+                                    <option>2D Content</option>
+                                </select>
+                            </p>
+                            <label for="client">Client Name</label>
+                            <p><input name="client" type="text" class="form-control" ng-model="inputForm.client" placeholder="Client's Name"/></p>
+                        </div>
+                    </div>
+                    <!--end:first-column-->
+                    <!--second-column-->
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label for="description">Portfolio Description</label>
+                            <p>
+                                <textarea name="description" class="form-control" ng-model="inputForm.description" placeholder="Enter Description" rows="10"></textarea>
+                            </p>
+                        </div>
+                    </div><!--end:second-column-->
+                    <div class="col-md-12">
+                        <label for="files">Files:</label>
+                        <p><input name="files" type="text" class="form-control" ng-model="inputForm.files" placeholder="Enter Relative Path seperated by semicolon"/></p>
+                        <label for="video">Video Link:</label>
+                        <p><input name="video" type="text" class="form-control" ng-model="inputForm.video" placeholder="Enter URL link"/></p>
+                        <p align="right">
+                            <button class="btn btn-info" ng-disabled="!(inputForm.name&&inputForm.category)" ng-click="updatePortfolio(inputForm)">Create Portfolio</button>
+                        </p>
+                    </div>
+                </div><!--end:description-container-->
             </div>
             <!--end:description-row-->            
         </div><!--end:padding clearfix-->
     </div><!--end:portfolio-inner-container-->
+       <div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>

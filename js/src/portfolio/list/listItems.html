@@ -2,19 +2,19 @@
 <div class="portfolio-inner-container">
         <div class="portfolio-hed">
             <h1 ng-bind="hello"></h1>
-            <p><a href="#">List Portfolio Items</p>
+            <p><a href="#">List Portfolio Items HEre</p>
         </div>
         <div class="navigation-container">
             <!--<a href="#"><i class="ion-android-arrow-back"></i></a>-->
-            <a ui-sref="portfolio-update"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Portfolio Item</a>
+            <a ui-sref="portfolio-update"><i class="glyphicon glyphicon-plus"></i>Add Portfolio Item</a>
             <!--<a href="#"><i class="ion-android-arrow-forward"></i></a>-->
         </div>
         <div class="no-padding clearfix">
             <!--description-row-->
             <div class="col-md-12">
                 <div class="description-container">
-                    <h4>Description</h4>
-                    <div ui-grid="{ data: portfolioList }" class="myGrid"></div>
+                    <h2>List of Portfolio Items</h2>
+                    <div ui-grid="portFolioListOptions" class="myGrid"></div>
                     <br />
                 </div>
             </div>
