@@ -1,3 +1,12 @@
 .myGrid {    
     height: 250px;
   }
+
+.center-align{
+  float: none;
+  display: inline-block;
+  position:relative;
+  text-align: center;
+  margin: 0 auto;
+  left:10px;
+}

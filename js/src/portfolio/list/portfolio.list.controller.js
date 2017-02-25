@@ -7,15 +7,31 @@
         vm.allListItems = [];
         vm.portFolioListOptions = {            
             enableSorting: true,
+            data:'allListItems',
+            enableColumnMenus:false,
             columnDefs: [
-                { name: 'Portfolio', field: 'name' },
-                { name: 'Category', field: 'category' },
-                { name: 'Client', field: 'client' }
-            ],
+                { displayName: 'Portfolio', field: 'name', width:200 },
+                { displayName: 'Category', field: 'category', width:200 },
+                { displayName: 'Client', field: 'client', width:200 },
+                { displayName: 'Created on', field: 'created', width:100},
+                { displayName: 'Description', field: 'description', width:350, enableSorting:false},
+                {
+                    name:'Edit',
+                    cellTemplate:'<button class="btn btn-xs btn-warning center-align">Edit</button>',
+                    width:50,
+                    enableSorting:false
+                },
+                {
+                    name:'Delete',
+                    cellTemplate:'<button class="btn btn-xs btn-danger center-align">Delete</button>',
+                    width:100,
+                    enableSorting:false
+                }
+            ]
         };
         var getAllListItemsService = PortfolioListService.getAllListItems(); //get from Service
         getAllListItemsService
-            .then(function onSuccess(response) {
+            .then(function (response) {
                 // Handle success
                 var data = response.data;
                 var status = response.status;
@@ -23,18 +39,9 @@
                 var headers = response.headers;
                 var config = response.config;
                 //NOTE: assigning data to ui-table 
-                vm.portFolioListOptions.data.push(data);
+                vm.allListItems = data;
                 console.log('Table object is: ', data);
-            }).catch(function onError(response) {
-                // Handle error
-                var data = response.data;
-                var status = response.status;
-                var statusText = response.statusText;
-                var headers = response.headers;
-                var config = response.config;
-                console.error('Error retrieving service-getAllListItems', status);
-            });
-            // $scope.$apply();
+            });//end:then
 
     }//end:PortfolioListController
 }());//iife
