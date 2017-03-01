@@ -7,7 +7,7 @@ class Portfolio{
 
     private $_database;
     const TABLE = "portfolios";
-    const TARGET_DIR = "img/portfolio/"; // Change this to suit your server location
+    const TARGET_DIR = "../img/portfolio/"; // Change this to suit your server location
 
     private $_result_json = array('status'=>'', 'message'=>'');
 
@@ -68,48 +68,57 @@ class Portfolio{
         }//endif:query executed successfully
     }//end:createPortfolioRecord
 
-    public function uploadFileToServer(inputFileObj){
-      $target_file = TARGET_DIR . basename(inputFileObj["name"]); //Set the destination location
+    public function uploadFileToServer($inputFileObj){
+      $target_file = self::TARGET_DIR . basename($inputFileObj["name"]); //Set the destination location
       $uploadOk = 1;
       $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
       // Check if image file is a actual image or fake image
-      if(isset($_POST["submit"])) {
-          $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if(isset($inputFileObj)) {
+          $check = getimagesize($inputFileObj["tmp_name"]);
           if($check !== false) {
               echo "File is an image - " . $check["mime"] . ".";
               $uploadOk = 1;
           } else {
               echo "File is not an image.";
               $uploadOk = 0;
-          }
-      }
+          }//if/else
+      }//end:$inputFileObj
+
       // Check if file already exists
       if (file_exists($target_file)) {
           echo "Sorry, file already exists.";
           $uploadOk = 0;
-      }
+      }//end:Check if file already exists
+
       // Check file size
-      if ($_FILES["fileToUpload"]["size"] > 500000) {
+      if ($inputFileObj["size"] > 5000000) {
           echo "Sorry, your file is too large.";
           $uploadOk = 0;
-      }
+      }//end:Check file size
+
       // Allow certain file formats
       if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
           && $imageFileType != "gif" ) {
           echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
           $uploadOk = 0;
-      }
+      }//end:Allow certain file formats
+
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk == 0) {
-          echo "Sorry, your file was not uploaded.";
+          $this->_result_json['status'] = 'error';
+          $this->_result_json['message'] = "Sorry, your file was not uploaded.";
       // if everything is ok, try to upload file
       } else {
-          if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-              echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+          $this->_result_json['status'] = 'success';
+          if (move_uploaded_file($inputFileObj["tmp_name"], $target_file)) {
+              $this->_result_json['message'] =  "The file ". basename( $inputFileObj["name"]). " has been uploaded.";
           } else {
-              echo "Sorry, there was an error uploading your file.";
+              $this->_result_json['status'] = 'error';
+              $this->_result_json['message'] =  "Sorry, there was an error uploading your file.";
           }
-      }
+      }//end:Check if $uploadOk is set to 0 by an error
+    return $this->_result_json;
     }//end:uploadFileToServer
 
 }//end-class:Portfolio

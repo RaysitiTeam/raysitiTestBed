@@ -31,6 +31,6 @@
           uploadFileService.then(function(response){
             console.log('Response from uploadFile service is: ', response);
           });//end:then
-        };//showNewFile()
+        };//uploadFile()
     }//end:PortfolioCreateController
 }());//iife
