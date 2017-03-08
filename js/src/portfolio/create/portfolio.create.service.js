@@ -46,6 +46,6 @@
 	                });
 	            return promise;
         }//end:uploadFiletoServer
-        
+
     }//end:PortfolioCreateService
 }());//iife

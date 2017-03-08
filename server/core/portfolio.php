@@ -6,8 +6,9 @@ include 'database.php';
 class Portfolio{
 
     private $_database;
-    const TABLE = "portfolios";
-    const TARGET_DIR = "../../img/portfolio/"; // Change this to suit your server location
+    const TABLE = "portfolios"; //NOTE: change this to suit your db table
+    const TARGET_DIR = "../../img/portfolio/"; // NOTE: Change this to suit your server location
+    const ALLOWED_FILE_SIZE = 500000; //NOTE: Change this to allow maximum file size to be uploaded
 
     private $_result_json = array('status'=>'', 'message'=>'');
 
@@ -95,7 +96,7 @@ class Portfolio{
       }//endif:Check if file already exists
 
       // Check file size
-      if ($inputFileObj["size"] > 5000000) {
+      if ($inputFileObj["size"] > self::ALLOWED_FILE_SIZE) {
           $this->_result_json['message'] = "Sorry, your file is too large.";
           $uploadOk = 0;
       }//endif:Check file size
@@ -116,6 +117,7 @@ class Portfolio{
           $this->_result_json['status'] = 'success';
           if (move_uploaded_file($inputFileObj["tmp_name"], $target_file)) {
               $this->_result_json['message'] =  "The file ". basename( $inputFileObj["name"]). " has been uploaded.";
+              $this->_result_json['path'] =  $target_file;
           } else {
               $this->_result_json['status'] = 'error';
               $this->_result_json['message'] =  "Sorry, there was an error uploading your file.";
