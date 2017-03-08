@@ -46,6 +46,13 @@
                     vm.fileResultDiv.showFileResult = true;
                     vm.fileResultDiv.warning = false;
                     vm.fileResultDiv.message = dataObj.message + " (" + dataObj.path + ")";
+                    //NOTE: update the input form object file with all the file paths uploaded
+                    var relativePath = PortfolioCreateService.getRelativePath(dataObj.path);
+                    if(vm.inputForm.files.length > 1){
+                      vm.inputForm.files = vm.inputForm.files.concat(";");
+                    }
+                    vm.inputForm.files = vm.inputForm.files.concat(relativePath);
+                    console.log('File List is now: ', vm.inputForm.files);
                 }else{
                   vm.fileResultDiv.showFileResult = true;
                   vm.fileResultDiv.warning = true;
