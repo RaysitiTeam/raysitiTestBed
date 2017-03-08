@@ -1,0 +1,14 @@
+.myGrid {    
+    height: 250px;
+  }
+
+.center-align{
+  float: none;
+  display: inline-block;
+  position:relative;
+  text-align: center;
+  margin: 0 auto;
+  left:10px;
+}
+
+input.fileUploadInputClass { border: 1px dotted grey; width: 100%; padding: 7px 5px 0px 12px; height: 40px; }

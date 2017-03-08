@@ -1,1 +1,93 @@
-<!--TODO: Template for portfolio page-->
+<!--Template-->
+<div class="portfolio-inner-container">
+    <div class="portfolio-hed">
+        <h1 ng-bind="hello"></h1>
+
+        <h2>New Portfolio Item</h2>
+    </div>
+    <div class="navigation-container">
+        <!--<a href="#"><i class="ion-android-arrow-back"></i></a>-->
+        <a href="#"><i class="ion-grid"></i></a>
+        <a class="no-highlight">New Portfolio Item</a>
+        <!--<a href="#"><i class="ion-android-arrow-forward"></i></a>-->
+    </div>
+    <div class="no-padding clearfix">
+        <!--description-row-->
+        <div class="col-md-12">
+            <div class="description-container">
+                <h2>Enter Portfolio Details</h2>
+                <!--first-column-->
+                <div class="col-md-6">
+                    <div class="col-md-11">
+                        <label for="name">Portfolio Name</label>
+
+                        <p><input name="name" type="text" class="form-control" ng-model="inputForm.name" placeholder="Enter Name" /></p>
+
+                        <p>
+                            <label for="category-list">Choose Category</label>
+                            <select name="category-list" class="form-control" ng-model="inputForm.category">
+                                <option selected="selected">Website</option>
+                                <option>Logo</option>
+                                <option>3D Content</option>
+                                <option>2D Content</option>
+                            </select>
+                        </p>
+                        <label for="client">Client Name</label>
+
+                        <p><input name="client" type="text" class="form-control" ng-model="inputForm.client" placeholder="Client's Name" /></p>
+                    </div>
+                </div>
+                <!--end:first-column-->
+                <!--second-column-->
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <label for="description">Portfolio Description</label>
+
+                        <p>
+                            <textarea name="description" class="form-control" ng-model="inputForm.description" placeholder="Enter Description" rows="10"></textarea>
+                        </p>
+                    </div>
+                </div>
+                <!--end:second-column-->
+                <!-- Form Content -->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="alert alert-dismissible" ng-if="fileResultDiv.showFileResult" ng-class="{'alert-success': fileResultDiv.warning==false, 'alert-danger': fileResultDiv.warning==true}">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <span ng-bind="fileResultDiv.message"></span>
+                        </div>
+                    </div>
+                    <label for="files">Files:</label>
+                    <form enctype="multipart/form-data" class="inlineFileUploadForm">
+                        <div class="col-md-4">
+                            <input type="file" size="40" placeholder="Browse to upload File" class="fileUploaddInputClass" file-directive />
+                        </div>
+                        <div class="col-md-4">
+                            <span class="input-group-btn">
+                              <input class="btn btn-primary" type="submit" ng-click="uploadFile(inputFileObj)"/>
+                              <span class="glyphicon glyphicon-open">Upload</span>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                  <p><label for="video">Video Link:</label></p>
+                  <p><input name="video" type="text" class="form-control" ng-model="inputForm.video" placeholder="Enter URL link" /></p>
+                  <p align="right">
+                      <button class="btn btn-info" ng-disabled="!(inputForm.name&&inputForm.category)" ng-click="updatePortfolio(inputForm)">Create Portfolio</button>
+                  </p>
+                </div>
+                <!-- end:Form Content -->
+                <!--end:description-container-->
+            </div>
+            <!--end:description-row-->
+        </div>
+        <!--end:padding clearfix-->
+    </div>
+    <!--end:portfolio-inner-container-->
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>

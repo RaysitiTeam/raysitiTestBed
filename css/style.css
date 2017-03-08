@@ -1873,6 +1873,12 @@ footer .nav li a {
     background: #333;
 }
 
+.navigation-container a.no-highlight:hover {
+    color: #333;
+    text-decoration: none;
+    background: none;    
+}
+
 .description-container {
     padding: 0px 50px;
 }
