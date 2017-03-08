@@ -101,8 +101,8 @@ class Portfolio{
       }//endif:Check file size
 
       // Allow certain file formats
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-          && $imageFileType != "gif" ) {
+      if($imageFileType != "jpg" && $imageFileType != "JPG" && $imageFileType != "png" && $imageFileType != "PNG" && $imageFileType != "jpeg" && $imageFileType != "JPEG"
+          && $imageFileType != "gif" && $imageFileType != "GIF" ) {
           $this->_result_json['message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
           $uploadOk = 0;
       }//endif:Allow certain file formats

@@ -24,8 +24,8 @@
 
         vm.uploadFile = function(inputfile){
           console.log('Upload File to be is', inputfile);
-          console.log('File type is ',typeof(inputfile));
-          
+          // console.log('File type is ',typeof(inputfile));
+
           //FIXME: PAJ - Calling PHP Service - fileupload.php
           var uploadFileService = PortfolioCreateService.uploadFiletoServer(inputfile);
           uploadFileService.then(function(response){
