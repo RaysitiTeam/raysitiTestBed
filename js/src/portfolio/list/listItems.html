@@ -2,7 +2,7 @@
 <div class="portfolio-inner-container">
         <div class="portfolio-hed">
             <h1 ng-bind="hello"></h1>
-            <p><a href="#">List Portfolio Items HEre</p>
+            <p><a href="#">List Portfolio Items Here</p>
         </div>
         <div class="navigation-container">
             <!--<a href="#"><i class="ion-android-arrow-back"></i></a>-->
@@ -13,11 +13,11 @@
             <!--description-row-->
             <div class="col-md-12">
                 <div class="description-container">
-                    <h2>List of Portfolio Items</h2>
+                    <h2>List of Portfolio Items <button ng-click="toggleFiltering()" class="btn btn-success btn-sm">Toggle Search</button></h2>                    
                     <div ui-grid="portFolioListOptions" class="myGrid"></div>
                     <br />
                 </div>
             </div>
-            <!--end:description-row-->            
+            <!--end:description-row-->
         </div><!--end:padding clearfix-->
     </div><!--end:portfolio-inner-container-->
