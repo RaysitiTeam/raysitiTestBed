@@ -6,7 +6,7 @@
         var modalInstance = $modal.open({
           animation: true,
           size: 'sm',
-          templateUrl: 'app/components/alert-modal/alert-modal.html',
+          templateUrl: 'js/src/components/alert-modal/alert-modal.html',
           controller: 'AlertModalController',
           resolve: {
             title: function () {

@@ -1,0 +1,12 @@
+/* @headerBlue: #00619E;
+ @headerRed: #D34343;
+ @whitish: #FFFFFF;*/
+
+.alert-modal-class{
+  color: black;
+}
+
+.alert-modal-class .modal-header{
+  background: #00619E;
+  color: #FFFFFF;
+}

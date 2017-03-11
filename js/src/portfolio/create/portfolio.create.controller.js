@@ -1,8 +1,8 @@
 (function(){
     angular.module('raysiti')
     .controller('PortfolioCreateController',PortfolioCreateController);
-    PortfolioCreateController.$inject = ['$scope','PortfolioCreateService'];
-    function PortfolioCreateController($scope,PortfolioCreateService){
+    PortfolioCreateController.$inject = ['$scope','PortfolioCreateService','AlertModalService','$state'];
+    function PortfolioCreateController($scope,PortfolioCreateService,AlertModalService,$state){
         var vm = $scope;
         vm.inputFileObj = {};
         vm.statusMesage ='';
@@ -23,7 +23,13 @@
         vm.updatePortfolio = function(inputObj){
             var updatePortfolioService = PortfolioCreateService.updatePortfolio(inputObj);
             updatePortfolioService.then(function(response){
-                console.log('Response from service is: ', response);
+                if(response.hasOwnProperty('data')){
+                  console.log('Response is: ', response.data);
+                  AlertModalService.confirm('Success', 'Created Successfully')
+                  .then(function(){
+                    $state.go('portfolio-list');
+                  });
+                }//enif:if response has data
             });//end:then
         };//end:updatePortfolio
 

@@ -5,7 +5,6 @@
     $scope.title = title;
 
     $scope.onConfirm = function () {
-      $state.go('login');
       $modalInstance.close();
     };
   });//end:AlertModalController

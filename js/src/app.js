@@ -5,6 +5,7 @@
         'ngAnimate',
         //third party dependencies
         'ui.router',
+        'ui.bootstrap',
         'ui.grid'
     ]);
 
