@@ -25,12 +25,19 @@
 
                         <p>
                             <label for="category-list">Choose Category</label>
-                            <select name="category-list" class="form-control" ng-model="inputForm.category">
+                            <!-- NOTE: new multiselect ui filter goes here -->
+                            <ui-select multiple ng-model="inputForm.category" theme="bootstrap" ng-disabled="ctrl.disabled" close-on-select="false" style="width: 300px;" title="You can select Multiple Categories">
+                                <ui-select-match placeholder="You can select Multiple Categories...">{{$item}}</ui-select-match>
+                                <ui-select-choices repeat="category in availableCategories | filter:$select.search">
+                                    {{category}}
+                                </ui-select-choices>
+                            </ui-select>
+                            <!-- <select name="category-list" class="form-control" ng-model="inputForm.category">
                                 <option selected="selected">Website</option>
                                 <option>Logo</option>
                                 <option>3D Content</option>
                                 <option>2D Content</option>
-                            </select>
+                            </select> -->
                         </p>
                         <label for="client">Client Name</label>
 
@@ -69,16 +76,16 @@
                             </span>
                         </div>
                         <div class="col-md-12">
-                          <textarea rows="8" cols="40" ng-model="inputForm.files" ng-bind="inputForm.files"></textarea>
+                            <textarea rows="8" cols="40" ng-model="inputForm.files" ng-bind="inputForm.files"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-12">
-                  <p><label for="video">Video Link:</label></p>
-                  <p><input name="video" type="text" class="form-control" ng-model="inputForm.video" placeholder="Enter URL link" /></p>
-                  <p align="right">
-                      <button class="btn btn-info" ng-disabled="!(inputForm.name&&inputForm.category)" ng-click="updatePortfolio(inputForm)">Create Portfolio</button>
-                  </p>
+                    <p><label for="video">Video Link:</label></p>
+                    <p><input name="video" type="text" class="form-control" ng-model="inputForm.video" placeholder="Enter URL link" /></p>
+                    <p align="right">
+                        <button class="btn btn-info" ng-disabled="!(inputForm.name&&inputForm.category)" ng-click="updatePortfolio(inputForm)">Create Portfolio</button>
+                    </p>
                 </div>
                 <!-- end:Form Content -->
                 <!--end:description-container-->

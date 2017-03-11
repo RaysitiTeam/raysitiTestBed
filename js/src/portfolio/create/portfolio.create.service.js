@@ -7,7 +7,7 @@
         return {
             updatePortfolio: updatePortfolio,
             uploadFiletoServer: uploadFiletoServer,
-            getRelativePath:getRelativePath
+            getRelativePath:getRelativePath            
         }; //end:return
         function updatePortfolio(inputObj) {
             var promise = $http({
