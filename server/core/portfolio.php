@@ -69,6 +69,24 @@ class Portfolio{
         }//endif:query executed successfully
     }//end:createPortfolioRecord
 
+    public function deletePortfolioRecord($name="N/A",$category="N/A",$client="N/A"){
+        $conn = $this->_database->getConnection();
+//        echo $date;
+        self::checkConnection($conn);
+         $query = "DELETE FROM ".self::TABLE." WHERE name = '$name' AND category = '$category' AND client = '$client'";
+        if ($conn->query($query) === TRUE) {
+            $conn->close();
+            $this->_result_json['status'] = 'success';
+            $this->_result_json['message'] = 'Record deleted successfully';
+            return $this->_result_json;
+        } else {
+            $conn->close();
+            $this->_result_json['status'] = 'error';
+            $this->_result_json['message'] = "Error: " . $query . " : " . $conn->error;
+            return $this->_result_json;
+        }//endif:query executed successfully
+    }//end:deletePortfolioRecord
+
     public function uploadFileToServer($inputFileObj){
       // NOTE: for debugging
       // echo $inputFileObj["tmp_name"];
