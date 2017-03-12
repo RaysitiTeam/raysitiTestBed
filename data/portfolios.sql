@@ -32,6 +32,7 @@ CREATE TABLE `portfolios` (
   `category` varchar(100) NOT NULL,
   `client` varchar(100) NOT NULL,
   `description` text NOT NULL,
+  `startDate` varchar(250) NOT NULL,
   `created` varchar(100) NOT NULL,
   `files` text NOT NULL,
   `video` varchar(200) NOT NULL
@@ -41,12 +42,8 @@ CREATE TABLE `portfolios` (
 -- Dumping data for table `portfolios`
 --
 
-INSERT INTO `portfolios` (`id`, `name`, `category`, `client`, `description`, `created`, `files`, `video`) VALUES
-(1, 'Nannu Project', 'Logo', 'Nannu', 'When Mr. Naveen Noronha of Nannu''s Food Products came to us asking for a logo design, we felt that his requirement was very unique and the product idea would definitely click - he wanted to introduce Chicken Pickels to Bangaloreans.', '2017-02-24', 'img/demo-1/logos/nannus_customerLogo_1200X800.png;img/demo-1/logos/nannus_customerLogo_1200X800_2.png;img/demo-1/logos/nannus_customerLogo_1200X800_3.png', 'N/A'),
-(2, 'Bimba', 'Logo', 'Bimba', 'Pickle is a compulsory accompaniment with most of the daily Indian,\r\n                        especially South Indian dishes. When the same tantalizing aromas and flavors of the hot Indian spices\r\n                        are accompanied by the natural juices of marinated and treated chicken, it''s heaven.', '2017-02-01', 'img/demo-1/logos/nannus_customerLogo_1200X800_1.png;\r\nimg/demo-1/logos/nannus_customerLogo_1200X800_2.png;\r\nimg/demo-1/logos/nannus_customerLogo_1200X800_3.png', 'N/A'),
-(14, 'VCSPharma', 'Website', 'N/A', 'N/A', '2017-02-25', 'N/A', 'N/A'),
-(17, 'Pramod', 'Website', 'Raysiti', 'This is a test', '2017-02-25', 'img/src/image1.jpg', 'http://www.youtube.com'),
-(18, 'VCS Pharmaceuticals', 'Website', 'VCS Pharma', 'VCS Pharmaceuticals is hosted on www.vcspharmaceuticals.org', '2017-02-25', 'img/portfolio/vcs/vcspharmaceuticals.jpg', 'https://www.youtube.com');
+INSERT INTO `portfolios` (`id`, `name`, `category`, `client`, `description`, `startDate`, `created`, `files`, `video`) VALUES
+(1, 'Pramod', 'Web Design', 'Ananth Shayana', 'Lorem Ipsum this is a test', '2016-12-31T18:30:00.000Z', '2017-03-11', 'img/portfolio/nannus_image2.PNG', 'www.youtube.com');
 
 --
 -- Indexes for dumped tables

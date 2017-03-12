@@ -26,6 +26,7 @@
             templateUrl:'js/src/portfolio/edit/editPortfolio.html',
             controller:'PortfolioEditController',
             params: {
+              id:null,
     					name: null,
               client:null,
               category:null,

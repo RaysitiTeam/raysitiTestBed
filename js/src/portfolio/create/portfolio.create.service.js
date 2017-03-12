@@ -1,21 +1,47 @@
 (function() {
     angular.module('raysiti')
         .factory('PortfolioCreateService', PortfolioCreateService);
-    PortfolioCreateService.$inject = ['$http', 'createPortfolioEndPoint', 'uploadFileEndPoint'];
+    PortfolioCreateService.$inject = ['$http', 'createPortfolioEndPoint', 'uploadFileEndPoint','editPortfolioEndPoint'];
 
-    function PortfolioCreateService($http, createPortfolioEndPoint, uploadFileEndPoint) {
+    function PortfolioCreateService($http, createPortfolioEndPoint, uploadFileEndPoint,editPortfolioEndPoint) {
         return {
             createPortfolio: createPortfolio,
+            updatePortfolio: updatePortfolio,
             uploadFiletoServer: uploadFiletoServer,
             getRelativePath:getRelativePath,
             getRecordDetailsService:getRecordDetailsService,
             stringToArray:stringToArray
         }; //end:return
+
         function createPortfolio(inputObj) {
             var promise = $http({
                     method: 'POST',
                     url: createPortfolioEndPoint.url,
                     data: {
+                        name: inputObj.name,
+                        category: inputObj.category,
+                        client: inputObj.client,
+                        description: inputObj.description,
+                        startDate: inputObj.startDate,
+                        files: inputObj.files,
+                        video: inputObj.video
+                    }
+                }) //end:$http
+                .success(function(data, status, headers, config) {
+                    return data;
+                })
+                .error(function(data, status, headers, config) {
+                    console.error('Error updating the service: PortfolioCreateService:updatePortfolio', data);
+                }); //end:success/error
+            return promise;
+        } //end:updatePortfolio
+
+        function updatePortfolio(recordId, inputObj) {
+            var promise = $http({
+                    method: 'POST',
+                    url: editPortfolioEndPoint.url,
+                    data: {
+                        id: recordId,
                         name: inputObj.name,
                         category: inputObj.category,
                         client: inputObj.client,

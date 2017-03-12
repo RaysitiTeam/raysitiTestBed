@@ -27,7 +27,7 @@ class Portfolio{
         //Check if connection is established
         self::checkConnection($conn);
         //var_dump($conn);
-        $query = "SELECT name,category,client,description,startDate,created,files,video FROM ".self::TABLE." ;";
+        $query = "SELECT id,name,category,client,description,startDate,created,files,video FROM ".self::TABLE." ;";
         $result = $conn->query($query);
         //var_dump($result);
         if ($result = $conn->query($query)) {
@@ -69,6 +69,34 @@ class Portfolio{
             return $this->_result_json;
         }//endif:query executed successfully
     }//end:createPortfolioRecord
+
+    public function editPortfolioRecord($id,$name,$category,$client="N/A",$description="N/A",$startDate="N/A",$files="N/A",$video="N/A" ){
+        $conn = $this->_database->getConnection();
+        $date = date("Y-m-d");
+//        echo $date;
+        self::checkConnection($conn);
+        $query = "UPDATE ".self::TABLE." SET ";
+        $query .= "name='$name', ";
+        $query .= "category='$category', ";
+        $query .= "client = '$client', ";
+        $query .= "description = '$description', ";
+        $query .= "startDate = '$startDate', ";
+        $query .= "created = '$date', ";
+        $query .= "files = '$files', ";
+        $query .= "video = '$video'";
+        $query = " WHERE id=$id";
+        if ($conn->query($query) === TRUE) {
+            $conn->close();
+            $this->_result_json['status'] = 'success';
+            $this->_result_json['message'] = 'Record Updated successfully';
+            return $this->_result_json;
+        } else {
+            $conn->close();
+            $this->_result_json['status'] = 'error';
+            $this->_result_json['message'] = "Error: " . $query . " : " . $conn->error;
+            return $this->_result_json;
+        }//endif:query executed successfully
+    }//end:editPortfolioRecord
 
     public function deletePortfolioRecord($name="N/A",$category="N/A",$client="N/A"){
         $conn = $this->_database->getConnection();

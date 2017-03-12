@@ -53,11 +53,12 @@
           }//endif:row has entity ppty
         };//end:deletePortfolio
 
-        vm.editPortfolio =function(row){          
+        vm.editPortfolio =function(row){
           console.log('Edit Portfolio Row selected is: ', row);
           if(row.hasOwnProperty('entity')){
             if(row.entity.hasOwnProperty('name') && row.entity.hasOwnProperty('category') && row.entity.hasOwnProperty('client')){
               $state.go('portfolio-edit',{
+      					id: row.entity.id,
       					name: row.entity.name,
                 client:row.entity.client,
                 category:row.entity.category,

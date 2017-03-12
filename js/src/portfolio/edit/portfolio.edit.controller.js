@@ -32,7 +32,9 @@
             }//endif:input.category is an object
           }//endif:inputObj has category
             console.log('inputObj is: ', inputObj);
-            var updatePortfolioService = PortfolioCreateService.updatePortfolio(inputObj);
+            console.log('Record ID is: ', $stateParams.id);
+            var recordId = $stateParams.id;
+            var updatePortfolioService = PortfolioCreateService.updatePortfolio(recordId, inputObj);
             updatePortfolioService.then(function(response) {
                 if (response.hasOwnProperty('data')) {
                     console.log('Response is: ', response.data);
@@ -91,7 +93,7 @@
             vm.inputForm.category = PortfolioCreateService.stringToArray($stateParams.category);
             vm.inputForm.description = $stateParams.description;
             vm.inputForm.files = $stateParams.files;
-            vm.inputForm.video = $stateParams.video;            
+            vm.inputForm.video = $stateParams.video;
           }else{
             AlertModalService.confirm('Invalid Record', 'Selected Record is non-existant')
             .then(function(){
