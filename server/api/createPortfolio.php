@@ -12,6 +12,7 @@ $name = $response->{'name'};
 $category = $response->{'category'};
 $client = $response->{'client'};
 $description = $response->{'description'};
+$startDate = $response->{'startDate'};
 $files = $response->{'files'};
 $video = $response->{'video'};
 
@@ -19,6 +20,6 @@ $video = $response->{'video'};
 $portfolioObj = new Portfolio();
 
 //Step4: Get the return value
-$status = $portfolioObj->createPortfolioRecord($name,$category,$client,$description,$files,$video); //store into database
+$status = $portfolioObj->createPortfolioRecord($name,$category,$client,$description,$startDate,$files,$video); //store into database
 header('Content-type: application/json');
 echo json_encode($status);

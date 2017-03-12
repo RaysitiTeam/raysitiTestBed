@@ -1,9 +1,9 @@
 (function() {
     angular.module('raysiti')
         .controller('PortfolioListController', PortfolioListController);
-    PortfolioListController.$inject = ['$scope', 'PortfolioListService','AlertModalService','uiGridConstants'];
+    PortfolioListController.$inject = ['$scope', 'PortfolioListService','AlertModalService','uiGridConstants','$state'];
 
-    function PortfolioListController($scope, PortfolioListService, AlertModalService, uiGridConstants) {
+    function PortfolioListController($scope, PortfolioListService, AlertModalService, uiGridConstants, $state) {
         var vm = $scope;
         vm.allListItems = [];
         //Toggle Filter input box using a button
@@ -53,8 +53,20 @@
           }//endif:row has entity ppty
         };//end:deletePortfolio
 
-        vm.editPortfolio =function(row){
+        vm.editPortfolio =function(row){          
           console.log('Edit Portfolio Row selected is: ', row);
+          if(row.hasOwnProperty('entity')){
+            if(row.entity.hasOwnProperty('name') && row.entity.hasOwnProperty('category') && row.entity.hasOwnProperty('client')){
+              $state.go('portfolio-edit',{
+      					name: row.entity.name,
+                client:row.entity.client,
+                category:row.entity.category,
+                description:row.entity.description,
+                files:row.entity.files,
+                video:row.entity.video,
+      				});
+            }//endif:row has all three ppties
+          }//endif:row has entity ppty
         };//end:deletePortfolio
 
         vm.portFolioListOptions = {
@@ -81,11 +93,18 @@
             }, {
                 displayName: 'Created on',
                 field: 'created',
-                width: 100
-            }, {
+                width: 100,
+                enableSorting: true
+            },{
+                displayName: 'Project Date',
+                field: 'startDate',
+                width: 110,
+                enableSorting: true
+            },
+             {
                 displayName: 'Description',
                 field: 'description',
-                width: 553,
+                width: 453,
                 enableSorting: false
             }, {
                 name: 'Edit',

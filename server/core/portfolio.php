@@ -27,7 +27,7 @@ class Portfolio{
         //Check if connection is established
         self::checkConnection($conn);
         //var_dump($conn);
-        $query = "SELECT name,category,client,description,created,files FROM ".self::TABLE." ;";
+        $query = "SELECT name,category,client,description,startDate,created,files,video FROM ".self::TABLE." ;";
         $result = $conn->query($query);
         //var_dump($result);
         if ($result = $conn->query($query)) {
@@ -41,17 +41,18 @@ class Portfolio{
         $conn->close();
     }//end:getAllPortfolioItems
 
-    public function createPortfolioRecord($name,$category,$client="N/A",$description="N/A",$files="N/A",$video="N/A" ){
+    public function createPortfolioRecord($name,$category,$client="N/A",$description="N/A",$startDate="N/A",$files="N/A",$video="N/A" ){
         $conn = $this->_database->getConnection();
         $date = date("Y-m-d");
 //        echo $date;
         self::checkConnection($conn);
-        $query = "INSERT INTO ".self::TABLE." (name, category, client, description, created, files, video) VALUES";
+        $query = "INSERT INTO ".self::TABLE." (name, category, client, description, startDate, created, files, video) VALUES";
         $query .= "(";
         $query .= "'".$name."',";
         $query .= "'".$category."',";
         $query .= "'".$client."',";
         $query .= "'".$description."',";
+        $query .= "'".$startDate."',";
         $query .= "'". $date."',";
         $query .= "'".$files."',";
         $query .= "'".$video."'";

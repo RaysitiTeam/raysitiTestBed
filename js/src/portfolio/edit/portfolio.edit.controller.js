@@ -1,9 +1,9 @@
 (function() {
     angular.module('raysiti')
-        .controller('PortfolioCreateController', PortfolioCreateController);
-    PortfolioCreateController.$inject = ['$scope', 'PortfolioCreateService', 'AlertModalService', '$state'];
+        .controller('PortfolioEditController', PortfolioEditController);
+    PortfolioEditController.$inject = ['$scope', 'PortfolioCreateService', 'AlertModalService', '$state','$stateParams'];
 
-    function PortfolioCreateController($scope, PortfolioCreateService, AlertModalService, $state) {
+    function PortfolioEditController($scope, PortfolioCreateService, AlertModalService, $state, $stateParams) {
         var vm = $scope;
         vm.inputFileObj = {};
         vm.statusMesage = '';
@@ -14,17 +14,17 @@
         };
         vm.inputForm = {
             name: '',
-            category: '',            
+            category: '',
             client: '',
             description: '',
-            startDate: '',
             files: '',
             video: ''
         };
 
         vm.availableCategories = ['Logo','Brochure','Web Design','White Board','Architectural','3D Stall/Kiosk','VFX/Post','Educational Animations'];
 
-        vm.createPortfolio = function(inputObj) {
+
+        vm.updatePortfolio = function(inputObj) {
           //STEP 1 : convert category array as a concatenated string
           if(inputObj.hasOwnProperty('category')){
             if(Object.prototype.toString.call(inputObj.category) === '[object Array]'){
@@ -32,8 +32,8 @@
             }//endif:input.category is an object
           }//endif:inputObj has category
             console.log('inputObj is: ', inputObj);
-            var createPortfolioService = PortfolioCreateService.createPortfolio(inputObj);
-            createPortfolioService.then(function(response) {
+            var updatePortfolioService = PortfolioCreateService.updatePortfolio(inputObj);
+            updatePortfolioService.then(function(response) {
                 if (response.hasOwnProperty('data')) {
                     console.log('Response is: ', response.data);
                     AlertModalService.confirm('Success', 'Created Successfully')
@@ -42,7 +42,7 @@
                         });
                 } //enif:if response has data
             }); //end:then
-        }; //end:createPortfolio
+        }; //end:updatePortfolio
 
         vm.uploadFile = function(inputfile) {
             vm.fileResultDiv = {
@@ -83,5 +83,26 @@
                 } //endif:if response has response.data
             }); //end:then
         }; //uploadFile()
-    } //end:PortfolioCreateController
+
+        if($stateParams.hasOwnProperty('name')&& $stateParams.hasOwnProperty('client') && $stateParams.hasOwnProperty('category')){
+          if($stateParams.name && $stateParams.client && $stateParams.category){
+            vm.inputForm.name = $stateParams.name;
+            vm.inputForm.client = $stateParams.client;
+            vm.inputForm.category = PortfolioCreateService.stringToArray($stateParams.category);
+            vm.inputForm.description = $stateParams.description;
+            vm.inputForm.files = $stateParams.files;
+            vm.inputForm.video = $stateParams.video;            
+          }else{
+            AlertModalService.confirm('Invalid Record', 'Selected Record is non-existant')
+            .then(function(){
+              $state.go('portfolio-list');
+            });//end:then
+          }
+        }else{
+          AlertModalService.confirm('Invalid Record', 'Selected Record is non-existant')
+          .then(function(){
+            $state.go('portfolio-list');
+          });//end:then
+        }//endif:stateParams has properties
+    } //end:PortfolioEditController
 }()); //iife
