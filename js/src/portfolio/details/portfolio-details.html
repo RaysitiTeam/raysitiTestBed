@@ -1,8 +1,8 @@
 <!--Template-->
 <div class="portfolio-inner-container">
         <div class="portfolio-hed">
-            <h1 ng-bind="hello"></h1>
-            <p><a href="#">Home</a> / <a href="#">Portfolio</a> / Logo Design </p>
+            <h1 ng-bind="name">{{name}}</h1>
+            <p><a href="#">Home</a> / <a href="#">Portfolio</a> / <span ng-bind="client"></span> </p>
         </div>
         <div class="navigation-container">
             <a href="#"><i class="ion-android-arrow-back"></i></a>
@@ -14,13 +14,7 @@
             <div class="col-md-12">
                 <div class="description-container">
                     <h4>Description</h4>
-                    <p>When Mr. Naveen Noronha of Nannu's Food Products came to us asking for a logo design, we felt that his
-                        requirement was very unique and the product idea would definitely click - he wanted to introduce
-                        Chicken Pickels to Bangaloreans. Pickle is a compulsory accompaniment with most of the daily Indian,
-                        especially South Indian dishes. When the same tantalizing aromas and flavors of the hot Indian spices
-                        are accompanied by the natural juices of marinated and treated chicken, it's heaven. OF course, the
-                        customer wanted a theme that reminded the keywords #hot #spicy #aromatic #chilli #red. Those were
-                        the instructions. It took us a week's time to come up with the draft design for them.</p>
+                    <p ng-bind="description"></p>
                     <br />
                 </div>
             </div>

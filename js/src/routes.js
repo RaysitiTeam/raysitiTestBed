@@ -6,15 +6,23 @@
         $urlRouterProvider.otherwise('/items');
         //ui-sref="portfolio-edit({name: 'Pramod', client:'Ananth', category:'Logo'})"
         $stateProvider
-        .state('portfolio',{
-            url:'/details',
-            templateUrl:'js/src/portfolio/details/portfolio-details.html',
-            controller:'PortfolioDetailsController'
-        })
         .state('portfolio-list',{
             url:'/items',
             templateUrl:'js/src/portfolio/list/listItems.html',
             controller:'PortfolioListController'
+        })
+        .state('portfolio-details',{
+          url:'/details',
+          templateUrl:'js/src/portfolio/details/portfolio-details.html',
+          controller:'PortfolioDetailsController',
+          params: {
+            name: null,
+            client:null,
+            category:null,
+            description:null,
+            files:null,
+            video:null,
+          }
         })
         .state('portfolio-update',{
             url:'/new',

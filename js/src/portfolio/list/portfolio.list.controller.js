@@ -53,6 +53,21 @@
           }//endif:row has entity ppty
         };//end:deletePortfolio
 
+        vm.detailsPortfolio = function(row){
+          if(row.hasOwnProperty('entity')){
+            if(row.entity.hasOwnProperty('name') && row.entity.hasOwnProperty('category') && row.entity.hasOwnProperty('client')){
+              $state.go('portfolio-details',{
+      					name: row.entity.name,
+                client:row.entity.client,
+                category:row.entity.category,
+                description:row.entity.description,
+                files:row.entity.files,
+                video:row.entity.video,
+      				});
+        }//endif:row.entity has ppty
+      }//endif:row has entity
+    };//end:detailsPortfolio
+
         vm.editPortfolio =function(row){
           console.log('Edit Portfolio Row selected is: ', row);
           if(row.hasOwnProperty('entity')){
@@ -82,7 +97,7 @@
                 displayName: 'Portfolio',
                 field: 'name',
                 width: 200,
-                headerCellClass: $scope.highlightFilteredHeader
+                cellTemplate: '<a class="list-anchor" ng-click="grid.appScope.detailsPortfolio(row)" ng-bind="row.entity.name"></a>'
             }, {
                 displayName: 'Category',
                 field: 'category',

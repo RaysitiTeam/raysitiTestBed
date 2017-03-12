@@ -10,3 +10,17 @@
   background: #00619E;
   color: #FFFFFF;
 }
+
+a.list-anchor{
+  display: inline-block;
+  margin: 5px 5px;
+  cursor: pointer;
+  color: blue;
+  text-decoration: none;
+}
+
+a.list-anchor:hover{
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
